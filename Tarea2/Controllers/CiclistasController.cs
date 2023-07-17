@@ -46,7 +46,7 @@ namespace Tarea2.Controllers
 
             if (ciclista != null)
             {
-                // Pasar el ciclista a la vista de captura de tiempo
+                // Pasa el ciclista a la vista de captura de tiempo
                 return View(ciclista);
             }
 
@@ -87,7 +87,14 @@ namespace Tarea2.Controllers
                     {
                         // Realizar el cálculo de la velocidad utilizando la fórmula adecuada
                         double metrosPorSegundo = 12000.0 / ciclista.Tiempo.TotalSeconds;
-                        ciclista.Velocidad = Math.Round(metrosPorSegundo, 2);
+                        if (double.IsInfinity(metrosPorSegundo))
+                        {
+                            ciclista.Velocidad = 0;
+                        }
+                        else
+                        {
+                            ciclista.Velocidad = Math.Round(metrosPorSegundo, 2);
+                        }
                     }
                 }
                 Session["Ciclistas"] = ciclistas;

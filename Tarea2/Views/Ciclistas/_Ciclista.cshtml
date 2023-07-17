@@ -1,0 +1,14 @@
+﻿@model Tarea2.Models.Ciclista
+
+<tr>
+    <td>@Model.Id</td>
+    <td>@Model.Nombre</td>
+    <td>@Model.Tiempo</td>
+    <td>@Model.Velocidad</td>
+    <td>
+        @*@Html.ActionLink("Capturar Tiempo", "CapturarTiempo", new { id = Model.Id })*@
+        @Html.ActionLink("Capturar Tiempo", "CapturarTiempo", new { id = Model.Id }, new { @class = "enlace-id" })
+
+    </td>
+</tr>
+

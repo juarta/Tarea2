@@ -1,0 +1,34 @@
+﻿@model Tarea2.Models.Ciclista
+
+@{
+    ViewBag.Title = "Capturar Tiempo";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-group">
+        <label>ID del ciclista:</label>
+        <span>@Model.Id</span>
+        <br />
+        <label>Nombre completo:</label>
+        <span>@Model.Nombre @Model.Apellido</span>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Minutos)
+        @Html.TextBoxFor(model => model.Minutos, new { @class = "form-control", type = "number", min = "0", max = "59" })
+        @Html.ValidationMessageFor(model => model.Minutos)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Segundos)
+        @Html.TextBoxFor(model => model.Segundos, new { @class = "form-control", type = "number", min = "0", max = "59" })
+        @Html.ValidationMessageFor(model => model.Segundos)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+}

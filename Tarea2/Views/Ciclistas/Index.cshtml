@@ -1,0 +1,56 @@
+﻿@model List<Tarea2.Models.Ciclista>
+
+@{
+    ViewBag.Title = "Lista de Ciclistas";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<style>
+    .table-rounded {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .filter-container {
+        margin-bottom: 20px;
+    }
+
+        .filter-container .form-group {
+            margin-right: 10px;
+        }
+
+        .filter-container .btn-filter {
+            margin-top: 5px;
+        }
+</style>
+
+<p>
+    @Html.ActionLink("Agregar Ciclista", "Agregar")
+</p>
+
+<table class="table table-striped table-rounded">
+    <thead style="background-color: #337ab7; color: white;">
+        <tr>
+            <th>ID Ciclista</th>
+            <th>Nombre completo</th>
+            <th>Tiempo (Minutos:Segundos)</th>
+            <th>Metros por segundo</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ciclista in Model)
+        {
+        <tr>
+            <td>@Html.ActionLink(ciclista.Id.ToString(), "CapturarTiempo", new { id = ciclista.Id }, new { @class = "enlace-id" })</td>
+
+            <td>@ciclista.Nombre  @ciclista.Apellido</td>
+            <td>@(ciclista.Tiempo != null ? ciclista.Tiempo.ToString("mm':'ss") : "")</td>
+            <td>@(ciclista.Velocidad) </td>
+            @*<td><span class="velocidad" data-id="@ciclista.Id"></span></td>*@
+
+        </tr>
+        }
+    </tbody>
+</table>
